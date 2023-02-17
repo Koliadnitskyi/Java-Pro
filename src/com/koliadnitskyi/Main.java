@@ -7,31 +7,31 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    private static final String popularWordsStr = "10 самых популярных слов которые имеют больше 2 символов: ";
-    private static final String numberOfUniqueWordsStr = ". Количество уникальных слов: ";
-    private static final String reEntryStr = "Введите имя книги или введите End для прекращения работы:";
+    private static final String popularWordsStr = "10 most popular words that have more than 2 characters: ";
+    private static final String numberOfUniqueWordsStr = ". Number of unique words: ";
+    private static final String reEntryStr = "Enter a book name or type End to stop working:";
 
     public static void main(String[] args) {
         Scanner bookName = new Scanner(System.in);
         System.out.println(reEntryStr);
-        for (; ; ) {
+        while (true) {
             String reading = bookName.nextLine();
             File path = new File(reading);
             if (reading.equals("End")) {
-                System.out.println("Работа приложения окончена.");
+                System.out.println("Application completed its work.");
                 break;
             } else {
                 if (path.exists()) {
                     try {
-                        List<Map.Entry<String, Integer>> popularWord = BookMethods.gettingPopularWord(String.valueOf(path));
-                        int numberOfUniqueWords = BookMethods.gettingNumberOfUniqueWords(String.valueOf(path));
+                        List<Map.Entry<String, Integer>> popularWord = BookParser.gettingPopularWord(String.valueOf(path));
+                        int numberOfUniqueWords = BookParser.uniuqueWordCounter(String.valueOf(path));
                         System.out.println(popularWordsStr + popularWord + numberOfUniqueWordsStr + numberOfUniqueWords + "\n" + reEntryStr);
-                        BookMethods.writingToFile(popularWordsStr + popularWord + numberOfUniqueWordsStr + numberOfUniqueWords, "Statistics " + path);
+                        BookParser.writingToFile(popularWordsStr + popularWord + numberOfUniqueWordsStr + numberOfUniqueWords, "Statistics " + path);
                     } catch (FileNotFoundException e) {
-                        System.out.println("Возникла проблема с чтением файла: " + path);
+                        System.out.println("There was a problem reading the file: " + path);
                     }
                 } else {
-                    System.out.println("Такой книги нет. " + reEntryStr);
+                    System.out.println("There is no such book. " + reEntryStr);
                 }
             }
         }
