@@ -68,9 +68,9 @@ public class BookMethods {
         return gettingCountOfEachWord(path)
                 .entrySet()
                 .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()).
-                limit(10).
-                collect(Collectors.toList());
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .limit(10)
+                .collect(Collectors.toList());
     }
 
     public static int gettingNumberOfUniqueWords(String path) throws FileNotFoundException {
@@ -83,7 +83,7 @@ public class BookMethods {
         try (PrintWriter savingStatisticalData = new PrintWriter(name)) {
             savingStatisticalData.println(data);
         } catch (FileNotFoundException e) {
-            System.out.println("Не удалось записать данные в файл");
+            System.out.println("Возникла проблема с записью данные в файл");
         }
     }
 }

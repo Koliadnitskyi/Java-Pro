@@ -18,6 +18,7 @@ public class Main {
             String reading = bookName.nextLine();
             File path = new File(reading);
             if (reading.equals("End")) {
+                System.out.println("Работа приложения окончена.");
                 break;
             } else {
                 if (path.exists()) {
@@ -37,4 +38,3 @@ public class Main {
         bookName.close();
     }
 }
-
