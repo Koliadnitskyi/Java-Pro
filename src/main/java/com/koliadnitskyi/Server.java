@@ -12,7 +12,7 @@ public class Server {
     private static BufferedWriter out;
 
     public static void main(String[] args) {
-        final String error = "An error has occurred in the application";
+        final String error = "An error has occurred in the application.";
         final String infoStartServer = "Server started!";
         final String infoFinishServer = "Server closed!";
         final String securityQuestion = "What is palyanica?";
