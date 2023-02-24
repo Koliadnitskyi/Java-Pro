@@ -12,6 +12,7 @@ public class Server {
     private static BufferedWriter out;
 
     public static void main(String[] args) {
+
         final String error = "An error has occurred in the application.";
         final String infoStartServer = "Server started!";
         final String infoFinishServer = "Server closed!";
@@ -52,7 +53,7 @@ public class Server {
                 server.close();
             }
         } catch (IOException e) {
-            System.err.println(error);
+            System.out.println(error);
         }
     }
 }
