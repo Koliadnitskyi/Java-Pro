@@ -12,7 +12,6 @@ public class Server {
     private static BufferedWriter out;
 
     public static void main(String[] args) {
-
         try {
             try {
                 server = new ServerSocket(8081);
