@@ -13,33 +13,25 @@ public class Server {
 
     public static void main(String[] args) {
 
-        final String error = "An error has occurred in the application.";
-        final String infoStartServer = "Server started!";
-        final String infoFinishServer = "Server closed!";
-        final String securityQuestion = "What is palyanica?";
-        final String parting = "All the best to you. Goodbye. ";
-        final String terminated = "Everything is clear with you. Cooperation terminated.";
-        final String bread = "Bread";
-        final String hello = "Hello!";
         try {
             try {
                 server = new ServerSocket(8081);
-                System.out.println(infoStartServer);
+                System.out.println("Server started!");
                 client = server.accept();
                 try {
                     in = new BufferedReader(new InputStreamReader(client.getInputStream()));
                     out = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-                    out.write(hello + "\n");
+                    out.write("Hello!" + "\n");
                     out.flush();
                     String word = in.readLine();
                     if (new Verification().languageControl(word)) {
-                        out.write(securityQuestion + "\n");
+                        out.write("What is palyanica?" + "\n");
                         out.flush();
-                        if (in.readLine().equals(bread)) {
-                            out.write(parting + LocalDateTime.now() + "\n");
+                        if (in.readLine().equals("Bread")) {
+                            out.write("All the best to you. Goodbye. " + LocalDateTime.now() + "\n");
                             out.flush();
                         } else {
-                            out.write(terminated + "\n");
+                            out.write("Everything is clear with you. Cooperation terminated." + "\n");
                             out.flush();
                         }
                     }
@@ -49,11 +41,11 @@ public class Server {
                     out.close();
                 }
             } finally {
-                System.out.println(infoFinishServer);
+                System.out.println("Server closed!");
                 server.close();
             }
         } catch (IOException e) {
-            System.out.println(error);
+            System.out.println("An error has occurred in the application.");
         }
     }
 }
