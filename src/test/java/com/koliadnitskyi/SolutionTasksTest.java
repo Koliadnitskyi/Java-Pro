@@ -17,14 +17,6 @@ public class SolutionTasksTest {
 
     @Test
     public void reverseTest() {
-        ListNode starting = new ListNode(1) {
-            {
-                add(2);
-                add(3);
-                add(4);
-                add(5);
-            }
-        };
         ListNode expected = new ListNode(5) {
             {
                 add(4);
@@ -33,7 +25,14 @@ public class SolutionTasksTest {
                 add(1);
             }
         };
-        ListNode actual = tmp.reverse(starting);
+        ListNode actual = tmp.reverse(new ListNode(1) {
+            {
+                add(2);
+                add(3);
+                add(4);
+                add(5);
+            }
+        });
         Assert.assertEquals(expected, actual);
     }
 }
