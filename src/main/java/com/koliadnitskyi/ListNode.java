@@ -7,10 +7,6 @@ public class ListNode {
     private final int data;
     private ListNode next;
 
-    public ListNode(int data) {
-        this.data = data;
-    }
-
     public void add(int newData) {
         ListNode newNode = new ListNode(newData);
         if (this.next == null) {
