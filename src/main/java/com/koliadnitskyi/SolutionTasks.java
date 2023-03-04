@@ -18,8 +18,8 @@ public class SolutionTasks {
     public ListNode reverse(ListNode head) {
         ListNode tmpReturn = null;
         while (head != null) {
-            ListNode tmp = head.next;
-            head.next = tmpReturn;
+            ListNode tmp = head.getNext();
+            head.setNext(tmpReturn);
             tmpReturn = head;
             head = tmp;
         }

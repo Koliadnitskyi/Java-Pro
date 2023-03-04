@@ -3,11 +3,19 @@ package com.koliadnitskyi;
 import java.util.Objects;
 
 public class ListNode {
-    public int data;
-    public ListNode next;
+    private final int data;
+    private ListNode next;
 
     public ListNode(int data) {
         this.data = data;
+    }
+
+    public ListNode getNext() {
+        return next;
+    }
+
+    public void setNext(ListNode next) {
+        this.next = next;
     }
 
     public void add(int newdata) {
