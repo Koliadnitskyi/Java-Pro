@@ -4,9 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class SolutionTasksTest {
+
+    private final SolutionTasks tmp = new SolutionTasks();
+
     @Test
     public void maxProfitTest() {
-        SolutionTasks tmp = new SolutionTasks();
         int[] prices = {7, 1, 5, 3, 6, 4};
         int expected = 5;
         int actual = tmp.maxProfit(prices);
@@ -15,7 +17,6 @@ public class SolutionTasksTest {
 
     @Test
     public void reverseTest() {
-        SolutionTasks tmp = new SolutionTasks();
         ListNode starting = new ListNode(1);
         starting.add(2);
         starting.add(3);
