@@ -17,17 +17,22 @@ public class SolutionTasksTest {
 
     @Test
     public void reverseTest() {
-        ListNode starting = new ListNode(1);
-        starting.add(2);
-        starting.add(3);
-        starting.add(4);
-        starting.add(5);
-        ListNode reverse = new ListNode(5);
-        reverse.add(4);
-        reverse.add(3);
-        reverse.add(2);
-        reverse.add(1);
-        ListNode expected = reverse;
+        ListNode starting = new ListNode(1) {
+            {
+                add(2);
+                add(3);
+                add(4);
+                add(5);
+            }
+        };
+        ListNode expected = new ListNode(5) {
+            {
+                add(4);
+                add(3);
+                add(2);
+                add(1);
+            }
+        };
         ListNode actual = tmp.reverse(starting);
         Assert.assertEquals(expected, actual);
     }

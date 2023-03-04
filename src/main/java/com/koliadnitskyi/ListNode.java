@@ -11,12 +11,12 @@ public class ListNode {
         this.data = data;
     }
 
-    public void add(int newdata) {
-        ListNode newNode = new ListNode(newdata);
+    public void add(int newData) {
+        ListNode newNode = new ListNode(newData);
         if (this.next == null) {
             this.next = newNode;
         } else {
-            this.next.add(newdata);
+            this.next.add(newData);
         }
     }
 }
