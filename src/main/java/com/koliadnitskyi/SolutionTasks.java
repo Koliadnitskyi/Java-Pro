@@ -11,7 +11,6 @@ public class SolutionTasks {
     public static boolean duplicate(int[] nums) {
         return !Arrays.equals(nums, Arrays.stream(nums).distinct().toArray());
     }
-
     public static int[] sum(int[] nums, int target) {
         int[] tmp = new int[2];
         for (int o = 0; o < nums.length; o++) {
