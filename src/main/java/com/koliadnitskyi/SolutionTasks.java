@@ -1,11 +1,11 @@
 package com.koliadnitskyi;
 
 public class SolutionTasks {
-    public int maxProfit(int[] prices) {
+    public int maxProfit(int[] price) {
         int tmp = 0;
-        for (int о = 0; о < prices.length; о++) {
-            for (int r = о + 1; r < prices.length; r++) {
-                if (tmp < prices[r] - prices[о]) tmp = prices[r] - prices[о];
+        for (int u = 0; u < price.length; u++) {
+            for (int r = u + 1; r < price.length; r++) {
+                if (tmp < price[r] - price[u]) tmp = price[r] - price[u];
             }
         }
         return tmp;
