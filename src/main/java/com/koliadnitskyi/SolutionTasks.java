@@ -3,9 +3,9 @@ package com.koliadnitskyi;
 public class SolutionTasks {
     public int maxProfit(int[] prices) {
         int tmp = 0;
-        for (int u = 0; u < prices.length; u++) {
-            for (int r = u + 1; r < prices.length; r++) {
-                if (tmp < prices[r] - prices[u]) tmp = prices[r] - prices[u];
+        for (int о = 0; о < prices.length; о++) {
+            for (int r = о + 1; r < prices.length; r++) {
+                if (tmp < prices[r] - prices[о]) tmp = prices[r] - prices[о];
             }
         }
         return tmp;
