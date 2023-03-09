@@ -11,9 +11,7 @@ public class ListNode {
         ListNode newNode = new ListNode(newData);
         if (this.next == null) {
             this.next = newNode;
-        } else {
-            this.next.add(newData);
-        }
+        } else this.next.add(newData);
     }
 }
 
