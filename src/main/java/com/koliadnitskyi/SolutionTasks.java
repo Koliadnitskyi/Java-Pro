@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class SolutionTasks {
     public static boolean polydrome(String str) {
-        String tmp = str.replaceAll("[!\"#$%&'()*+,-.:;/<=>?@\\[\\]^_`{|}~ ]", "").toLowerCase();
+        String tmp = str.replaceAll("[!\"#$%&'()*+,/<=>?@\\[\\]^_`{|}~ ]", "").toLowerCase();
         return tmp.equals(new StringBuilder(tmp).reverse().toString());
     }
 
