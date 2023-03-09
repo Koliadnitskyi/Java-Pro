@@ -22,6 +22,7 @@ public class SolutionTasks {
                 }
             }
         }
+        System.out.println(tmp);
         return tmp;
     }
 }
