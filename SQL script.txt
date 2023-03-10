@@ -1,0 +1,25 @@
+public."user"
+(
+    user_id integer NOT NULL GENERATED ALWAYS AS IDENTITY,
+    name text NOT NULL,
+    surname text NOT NULL,
+    date_of_registration date NOT NULL,
+    PRIMARY KEY (user_id)
+);
+
+CREATE TABLE public.wallet
+(
+    wallet_id integer NOT NULL GENERATED ALWAYS AS IDENTITY,
+    currency text NOT NULL,
+    amount integer NOT NULL,
+    user_id integer NOT NULL,
+    created date NOT NULL,
+    PRIMARY KEY (wallet_id),
+    CONSTRAINT fk_user_wallet FOREIGN KEY (user_id)
+        REFERENCES public."user" (user_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+);
+
+SELECT name, surname, currency, amount  FROM "user" FULL JOIN wallet ON "user".user_id = wallet.user_id;
