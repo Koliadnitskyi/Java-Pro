@@ -1,4 +1,4 @@
-public."user"
+CREATE TABLE public."user"
 (
     user_id integer NOT NULL GENERATED ALWAYS AS IDENTITY,
     name text NOT NULL,
