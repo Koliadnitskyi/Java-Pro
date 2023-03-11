@@ -20,7 +20,7 @@ public class Server {
                 try {
                     in = new BufferedReader(new InputStreamReader(client.getInputStream()));
                     out = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-                    out.write("Hello!" + "\n");
+                    out.write("Hello" + "\n");
                     out.flush();
                     String word = in.readLine();
                     if (new Verification().languageControl(word)) {
