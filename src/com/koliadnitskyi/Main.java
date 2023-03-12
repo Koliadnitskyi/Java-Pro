@@ -17,7 +17,7 @@ public class Main {
         while (true) {
             String reading = bookName.nextLine();
             File path = new File(reading);
-            if (reading.equals("End")) {
+            if (reading.equals("End!")) {
                 System.out.println("Application completed its work.");
                 break;
             } else {
