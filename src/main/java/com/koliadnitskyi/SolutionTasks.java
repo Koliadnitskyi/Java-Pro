@@ -21,6 +21,4 @@ public class SolutionTasks {
         }
         return tmp;
     }
-
-
 }
