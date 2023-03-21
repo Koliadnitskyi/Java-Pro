@@ -7,7 +7,8 @@ public interface QuestionRepository {
 
     Question getRandom();
 
-    int getSizeTables();
+    int getSizeBase();
 
     void save(Question question);
+    void delete (int id);
 }
