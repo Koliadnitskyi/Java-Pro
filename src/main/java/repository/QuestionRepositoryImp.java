@@ -36,8 +36,7 @@ public class QuestionRepositoryImp implements QuestionRepository {
         }
     }
 
-    @Override
-    public int getSizeBase() {
+    private int getSizeBase() {
         try {
             int tmp = 0;
             PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement("SELECT * FROM Questions");
