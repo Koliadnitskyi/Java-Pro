@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class QuestionRepositoryImp implements QuestionRepository {
-    private final String getById = "SELECT * FROM Questions where id=?";
 
     private Question buildQuestion(ResultSet result) {
         try {
@@ -20,18 +19,6 @@ public class QuestionRepositoryImp implements QuestionRepository {
                     .text(result.getString("text"))
                     .topic(result.getString("topic"))
                     .build();
-        } catch (SQLException e) {
-            throw new SqlUpdateException(e.getMessage());
-        }
-    }
-
-    @Override
-    public Question get(int id) {
-        try {
-            PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement(getById);
-            preparedStatement.setInt(1, id);
-            ResultSet question = preparedStatement.executeQuery();
-            return new QuestionRepositoryImp().buildQuestion(question);
         } catch (SQLException e) {
             throw new SqlUpdateException(e.getMessage());
         }
