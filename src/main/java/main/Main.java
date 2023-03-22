@@ -12,7 +12,7 @@ public class Main {
         switch (scanner.nextInt()) {
             case (1):
                 do {
-                    System.out.println(new QuestionRepositoryImp().getRandom());
+                    System.out.println(new QuestionRepositoryImp().getRandom().getText());
                     System.out.println("Do you wanna a next question?");
                 } while (scanner.next().equals("Yes"));
                 break;

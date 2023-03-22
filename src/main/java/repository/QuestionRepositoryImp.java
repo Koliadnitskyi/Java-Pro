@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class QuestionRepositoryImp implements QuestionRepository {
-
+final private int sizeBase = new QuestionRepositoryImp().getSizeBase();
     private Question buildQuestion(ResultSet result) {
         try {
             result.next();
@@ -28,7 +28,7 @@ public class QuestionRepositoryImp implements QuestionRepository {
     public Question getRandom() {
         try {
             PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement("SELECT * FROM Questions where id=?");
-            preparedStatement.setInt(1, ThreadLocalRandom.current().nextInt(1, new QuestionRepositoryImp().getSizeBase()));
+            preparedStatement.setInt(1, ThreadLocalRandom.current().nextInt(1, sizeBase));
             ResultSet question = preparedStatement.executeQuery();
             return new QuestionRepositoryImp().buildQuestion(question);
         } catch (SQLException e) {
