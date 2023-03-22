@@ -27,7 +27,7 @@ public class QuestionRepositoryImp implements QuestionRepository {
     @Override
     public Question getRandom() {
         try {
-            PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement(getById);
+            PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement("SELECT * FROM Questions where id=?");
             preparedStatement.setInt(1, ThreadLocalRandom.current().nextInt(1, new QuestionRepositoryImp().getSizeBase()));
             ResultSet question = preparedStatement.executeQuery();
             return new QuestionRepositoryImp().buildQuestion(question);
