@@ -1,6 +1,8 @@
 package repository;
 
-import Exceptions.SqlUpdateException;
+import Exceptions.SqlDeleteException;
+import Exceptions.SqlGetException;
+import Exceptions.SqlSaveException;
 import model.Question;
 import repository.dao.QuestionRepository;
 
@@ -10,44 +12,34 @@ import java.sql.SQLException;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class QuestionRepositoryImp implements QuestionRepository {
-    final static int sizeBaseQuestions = new QuestionRepositoryImp().getSizeBase();
 
-    private Question buildQuestion(ResultSet result) {
+    private int getSizeDatabase() {
+        int sizeBaseQuestions;
         try {
-            result.next();
-            return Question.builder()
-                    .id(result.getInt("id"))
-                    .text(result.getString("text"))
-                    .topic(result.getString("topic"))
-                    .build();
+            PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement("select count(*)");
+            ResultSet question = preparedStatement.executeQuery();
+            sizeBaseQuestions = question.getInt(1);
         } catch (SQLException e) {
-            throw new SqlUpdateException(e.getMessage());
+            throw new SqlGetException(e.getMessage());
         }
+        return sizeBaseQuestions;
     }
 
     @Override
     public Question getRandom() {
         try {
-            PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement("SELECT * FROM Questions where id=?");
-            preparedStatement.setInt(1, ThreadLocalRandom.current().nextInt(1, sizeBaseQuestions));
-            ResultSet question = preparedStatement.executeQuery();
-            return new QuestionRepositoryImp().buildQuestion(question);
-        } catch (SQLException e) {
-            throw new SqlUpdateException(e.getMessage());
-        }
-    }
 
-    private int getSizeBase() {
-        try {
-            int tmp = 0;
-            PreparedStatement preparedStatement = ConnectionSingelton.getConnection().prepareStatement("SELECT * FROM Questions");
-            ResultSet question = preparedStatement.executeQuery();
-            while (question.next()) {
-                tmp++;
-            }
-            return tmp;
+            PreparedStatement preparedStatementTwo = ConnectionSingelton.getConnection().prepareStatement("SELECT * FROM Questions where id=?");
+            preparedStatementTwo.setInt(1, ThreadLocalRandom.current().nextInt(1, new QuestionRepositoryImp().getSizeDatabase()));
+            ResultSet questionTwo = preparedStatementTwo.executeQuery();
+            questionTwo.next();
+            return Question.builder()
+                    .id(questionTwo.getInt("id"))
+                    .text(questionTwo.getString("text"))
+                    .topic(questionTwo.getString("topic"))
+                    .build();
         } catch (SQLException e) {
-            throw new SqlUpdateException(e.getMessage());
+            throw new SqlGetException(e.getMessage());
         }
     }
 
@@ -60,7 +52,7 @@ public class QuestionRepositoryImp implements QuestionRepository {
             preparedStatement.setString(3, question.getTopic());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new SqlUpdateException(e.getMessage());
+            throw new SqlSaveException(e.getMessage());
         }
     }
 
@@ -71,7 +63,7 @@ public class QuestionRepositoryImp implements QuestionRepository {
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new SqlUpdateException(e.getMessage());
+            throw new SqlDeleteException(e.getMessage());
         }
     }
 }
