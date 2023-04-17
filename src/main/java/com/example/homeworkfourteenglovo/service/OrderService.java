@@ -4,28 +4,25 @@ import com.example.homeworkfourteenglovo.model.Order;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class OrderService {
-    private final List<Order> order = new ArrayList<>();
+    private final Map<Long, Order> order = new HashMap<>();
     private final Random random = new Random();
 
-    public Optional<Order> getOrderById(int id) {
-        return order.stream().filter(order -> order.getId() == id).findFirst();
+    public Optional<Map.Entry<Long, Order>> getOrderById(Long id) {
+        return order.entrySet().stream().filter(order -> order.getKey() == id).findFirst();
     }
 
-    public List<Order> getAll() {
+    public Map<Long, Order> getAll() {
         return this.order;
     }
 
     public Order save(Order orders) {
         orders.setId(this.random.nextInt());
         orders.setDate(LocalDate.now());
-        order.add(orders);
+        order.put(orders.getId(), orders);
         return orders;
     }
 }

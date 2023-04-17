@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/order")
@@ -18,13 +19,13 @@ public class OrderController {
     }
 
     @GetMapping
-    public List<Order> getOrder() {
+    public Map<Long,Order> getOrder() {
         return this.orderService.getAll();
     }
 
     @GetMapping("/{id}")
-    public Order getOrders(@PathVariable Integer id) {
-        return this.orderService.getOrderById(id).orElseThrow();
+    public Order getOrders(@PathVariable Long id) {
+        return this.orderService.getOrderById(id).orElseThrow().getValue();
     }
 
     @GetMapping

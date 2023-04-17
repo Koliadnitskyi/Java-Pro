@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 
 public class Order {
-    private int id;
+    private long id;
     private LocalDate date;
     private int cost;
     private Product product;
