@@ -2,7 +2,6 @@ package com.example.homeworkfourteenglovo.service;
 
 import com.example.homeworkfourteenglovo.model.Order;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.*;
 
@@ -12,7 +11,7 @@ public class OrderService {
     private final Random random = new Random();
 
     public Optional<Map.Entry<Long, Order>> getOrderById(Long id) {
-        return order.entrySet().stream().filter(order -> order.getKey() == id).findFirst();
+        return order.entrySet().stream().filter(order -> order.getKey().equals(id)).findFirst();
     }
 
     public Map<Long, Order> getAll() {
