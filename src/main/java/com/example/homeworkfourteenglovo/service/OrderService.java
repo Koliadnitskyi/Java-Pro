@@ -20,4 +20,12 @@ public class OrderService {
         orders.setDate(LocalDate.now());
         orderRepository.save(orders);
     }
+
+    public Order getById(Long id) {
+        return orderRepository.getById(id);
+    }
+
+    public List<Order> getAll() {
+        return orderRepository.getAll();
+    }
 }
