@@ -15,15 +15,27 @@ public class OrderRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public void save(Order order) {
-        jdbcTemplate.update("INSERT INTO Order VALUE (order_id, order_date, order_cost, order_product) values (?, ?, ?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO Order VALUE (order_id, order_date, order_cost, order_product_Id, order_product_Name, order_product_Cost) values (?, ?, ?, ?, ?, ?)",
                 order.getId(), order.getDate(), order.getCost(), order.getProduct().getId(), order.getProduct().getName(), order.getProduct().getCost());
     }
 
-    public Order getById(Long id) {
+    public Order get(Long id) {
         return jdbcTemplate.queryForObject("SELECT * FROM order WHERE order_id = " + id, new OrderRowMapper());
     }
 
     public List<Order> getAll() {
         return Collections.singletonList(jdbcTemplate.queryForObject("SELECT * FROM order", new OrderRowMapper()));
+    }
+
+    public void delete(Long id) {
+        jdbcTemplate.update("DELETE FROM order WHERE id =" + id);
+    }
+
+    public void update(Order order, Long id) {
+        jdbcTemplate.update("UPDATE Order SET order_cost = " + order.getCost()
+                + ", order_product_Id = " + order.getProduct().getId()
+                + ", order_product_Name = " + order.getProduct().getName()
+                + ", order_product_Cost = " + order.getProduct().getCost()
+                + "WHERE contact_id = " + id);
     }
 }

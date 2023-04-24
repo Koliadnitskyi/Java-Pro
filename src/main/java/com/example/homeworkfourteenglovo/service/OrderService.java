@@ -21,11 +21,19 @@ public class OrderService {
         orderRepository.save(orders);
     }
 
-    public Order getById(Long id) {
-        return orderRepository.getById(id);
+    public Order get(Long id) {
+        return orderRepository.get(id);
     }
 
     public List<Order> getAll() {
         return orderRepository.getAll();
+    }
+
+    public void delete(Long id) {
+        orderRepository.delete(id);
+    }
+
+    public void update(Order orders, Long id) {
+        orderRepository.update(orders, id);
     }
 }

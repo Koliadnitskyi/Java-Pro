@@ -13,19 +13,31 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
 
-    @GetMapping
+    @PostMapping
     public Order save(@RequestBody Order order) {
         this.orderService.save(order);
         return order;
     }
 
     @GetMapping("/{id}")
-    public Order getOrders(@PathVariable Long id) {
-        return this.orderService.getById(id);
+    public Order get(@PathVariable Long id) {
+        return this.orderService.get(id);
     }
 
     @GetMapping
-    public List<Order> getOrder() {
+    public List<Order> getAll() {
         return this.orderService.getAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Order delete(@PathVariable Long id) {
+        this.orderService.delete(id);
+        return this.orderService.get(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public Order update(@RequestBody Order order, Long id) {
+        this.orderService.update(order, id);
+        return order;
     }
 }
