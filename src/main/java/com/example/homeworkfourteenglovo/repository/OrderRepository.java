@@ -19,7 +19,7 @@ public class OrderRepository {
                 order.getId(), order.getDate(), order.getCost(), order.getProduct().getId(), order.getProduct().getName(), order.getProduct().getCost());
     }
 
-    public Order get(Long id) {
+    public Order getById(Long id) {
         return jdbcTemplate.queryForObject("SELECT * FROM order WHERE order_id = " + id, new OrderRowMapper());
     }
 
@@ -27,11 +27,11 @@ public class OrderRepository {
         return Collections.singletonList(jdbcTemplate.queryForObject("SELECT * FROM order", new OrderRowMapper()));
     }
 
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         jdbcTemplate.update("DELETE FROM order WHERE id =" + id);
     }
 
-    public void update(Order order, Long id) {
+    public void updateById(Order order, Long id) {
         jdbcTemplate.update("UPDATE Order SET order_cost = " + order.getCost()
                 + ", order_product_Id = " + order.getProduct().getId()
                 + ", order_product_Name = " + order.getProduct().getName()

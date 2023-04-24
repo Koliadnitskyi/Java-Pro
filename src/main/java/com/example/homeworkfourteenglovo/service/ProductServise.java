@@ -20,7 +20,7 @@ public class ProductServise {
     }
 
     public Product get(Long id) {
-        return productRepository.get(id);
+        return productRepository.getById(id);
     }
 
     public List<Product> getAll() {
@@ -28,10 +28,10 @@ public class ProductServise {
     }
 
     public void delete(Long id) {
-        productRepository.delete(id);
+        productRepository.deleteById(id);
     }
 
     public void update(Product product, Long id) {
-        productRepository.update(product, id);
+        productRepository.updateById(product, id);
     }
 }

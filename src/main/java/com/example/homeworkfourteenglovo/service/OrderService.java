@@ -22,7 +22,7 @@ public class OrderService {
     }
 
     public Order get(Long id) {
-        return orderRepository.get(id);
+        return orderRepository.getById(id);
     }
 
     public List<Order> getAll() {
@@ -30,10 +30,10 @@ public class OrderService {
     }
 
     public void delete(Long id) {
-        orderRepository.delete(id);
+        orderRepository.deleteById(id);
     }
 
     public void update(Order orders, Long id) {
-        orderRepository.update(orders, id);
+        orderRepository.updateById(orders, id);
     }
 }
