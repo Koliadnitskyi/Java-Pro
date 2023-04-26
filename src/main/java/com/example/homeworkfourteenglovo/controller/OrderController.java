@@ -29,13 +29,13 @@ public class OrderController {
         return this.orderService.getAll();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public Order delete(@PathVariable Long id) {
         this.orderService.delete(id);
         return this.orderService.get(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Order update(@RequestBody Order order, Long id) {
         this.orderService.update(order, id);
         return order;

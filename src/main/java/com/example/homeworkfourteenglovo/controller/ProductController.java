@@ -29,13 +29,13 @@ public class ProductController {
         return this.productService.getAll();
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public Product delete(@PathVariable Long id) {
         this.productService.delete(id);
         return this.productService.get(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public Product update(@RequestBody Product product, Long id) {
         this.productService.update(product, id);
         return product;
