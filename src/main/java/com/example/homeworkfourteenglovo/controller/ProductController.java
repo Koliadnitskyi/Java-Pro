@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/v1/product")
+@RequestMapping("/v1/products")
 public class ProductController {
     private final ProductServise productService;
 
