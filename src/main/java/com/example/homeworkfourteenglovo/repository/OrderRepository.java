@@ -15,7 +15,7 @@ public class OrderRepository {
     private final JdbcTemplate jdbcTemplate;
 
     public void save(Order order) {
-        jdbcTemplate.update("INSERT INTO Order VALUE (order_id, order_date, order_cost, order_product_Id, order_product_Name, order_product_Cost) values (?, ?, ?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO Order VALUE (order_id, order_date, order_cost, order_product_id, order_product_name, order_product_cost) values (?, ?, ?, ?, ?, ?)",
                 order.getId(), order.getDate(), order.getCost(), order.getProduct().getId(), order.getProduct().getName(), order.getProduct().getCost());
     }
 
