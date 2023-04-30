@@ -11,7 +11,7 @@ import java.util.*;
 @Service
 @AllArgsConstructor
 public class OrderService {
-    OrderRepository orderRepository;
+    private OrderRepository orderRepository;
 
     private final Random random = new Random();
 

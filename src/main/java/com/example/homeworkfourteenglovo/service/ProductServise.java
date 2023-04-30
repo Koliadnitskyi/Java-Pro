@@ -10,7 +10,7 @@ import java.util.*;
 @Service
 @AllArgsConstructor
 public class ProductServise {
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     private final Random random = new Random();
 
